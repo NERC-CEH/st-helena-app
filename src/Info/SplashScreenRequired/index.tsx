@@ -63,8 +63,8 @@ const OnBoardingScreens: FC = ({ children }) => {
             <div className="message">
               <h2>Welcome</h2>
               <p>
-                <b>iRecord</b> is a platform for management and sharing of your
-                wildlife observations.
+                <b>iRecord St Helena</b> is a platform for managing and sharing
+                all of your wildlife observations.
               </p>
             </div>
           </SwiperSlide>
@@ -75,10 +75,7 @@ const OnBoardingScreens: FC = ({ children }) => {
           >
             <div className="message">
               <h2>Record</h2>
-              <p>
-                Record all the wildlife you see. Over <b>100,000 taxa</b> to
-                choose from.
-              </p>
+              <p>Record the wildlife you see.</p>
             </div>
           </SwiperSlide>
 
@@ -89,11 +86,12 @@ const OnBoardingScreens: FC = ({ children }) => {
             <div className="message">
               <h2>Accuracy</h2>
               <p>
-                Benefit from your <b>GPS and rich mapping choices</b>, further
-                automatic <b>data checks</b> and review by experts.
+                Locating wildlife is made easy by using your phone and the
+                iRecord maps.
               </p>
             </div>
           </SwiperSlide>
+
           <SwiperSlide
             className="fourth"
             style={{ backgroundImage: `url(${welcomeBackground4})` }}

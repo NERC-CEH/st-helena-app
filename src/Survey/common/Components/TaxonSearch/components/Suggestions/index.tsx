@@ -77,30 +77,30 @@ const getSearchInfo = () => (
         <br />
         <br />
         <T>
-          To find a species from its scientific name you can use shortcuts, e.g.
-          to find
+          To find a species from its scientific name you can use shortcuts e.g.
+          to find{' '}
           <b>
-            <i> Bellis perrenis</i>
+            <i>Succinea sanctaehelenae</i>
           </b>{' '}
-          (Daisy) you can type:
+          you can type:
         </T>
         <br />
         <br />
         <b>
-          <i>bellis p</i>
+          <i>succinea s</i>
         </b>
         <br />
         <b>
-          <i>bellis .ni</i>
+          <i>succinea .ta</i>
         </b>
         <br />
         <b>
-          <i> beper </i>
+          <i> susan </i>
         </b>{' '}
         <T>(2 letters of genus + 3 of species)</T>
         <br />
         <b>
-          <i>perennis</i>
+          <i>sanctaehelenae</i>
         </b>
         <br />
         <br />
