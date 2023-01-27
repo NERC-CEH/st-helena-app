@@ -1,5 +1,5 @@
 {
-	"appId": "uk.ac.ceh.irecord-st-helen",
+	"appId": "uk.ac.ceh.irecord.st.helena",
 	"appName": "iRecord St Helena App",
 	"bundledWebRuntime": false,
 	"webDir": "build",
