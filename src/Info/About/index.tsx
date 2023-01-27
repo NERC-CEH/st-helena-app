@@ -9,24 +9,33 @@ const About = () => (
     <Main id="about">
       <Section>
         <P>
-          iRecord St Helena App is an application that enables you to get
-          involved in biological recording. You can contribute your sightings
-          with photos, GPS acquired coordinates, descriptions and other
-          information, thus providing scientists with important new biodiversity
-          information that contributes to nature conservation, planning,
-          research and education.'
+          iRecord St Helena App enables you to get involved with biological
+          recording. Contribute your species sightings with GPS acquired
+          coordinates, descriptions and other information, thus providing
+          scientists with important new biodiversity information that
+          contributes to nature conservation, planning, research and education.
         </P>
       </Section>
 
       <Section>
-        <H>Who can use the app?</H>
         <P>
-          We encourage everyone to get involved with recording species as it is
-          very easy and quick to submit useful records without specialist
-          knowledge. It doesn&apos;t matter whether you are an amateur
-          enthusiast or a qualified biologist, iRecord St Helena App is for
-          anyone who wants to contribute to our database observations of the
-          natural environment.'
+          Your data will be kept secure and will be regularly backed up.
+          Automatic checks will be applied to your observations to help spot
+          potential errors, and experts can review your sightings. All wildlife
+          sightings for non-sensitive species are shared with other users and
+          will be made available to National Recording Schemes and Local Record
+          Centres.
+          <ul>
+            <li>Works fully offline</li>
+            <li>
+              Record all the wildlife you see - supports St Helena species
+            </li>
+            <li>Add new records with minimal effort</li>
+            <li>Benefit from automatic data checks and review by experts</li>
+            <li>Share your sightings with the recording community</li>
+            <li>Contribute to science and conservation</li>
+          </ul>
+          Offered by: St Helena Research Institute
         </P>
       </Section>
 
