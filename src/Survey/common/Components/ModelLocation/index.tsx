@@ -99,8 +99,6 @@ const ModelLocation: FC<Props> = ({ sample, subSample, ...otherProps }) => {
       <ModelLocationOrig
         model={model} // eslint-disable-line
         mapProviderOptions={config.map}
-        useGridRef
-        useGridMap
         onGPSClick={onGPSClick}
         backButtonProps={{ text: 'Back' }}
         setLocation={setLocation}

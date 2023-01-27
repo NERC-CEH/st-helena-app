@@ -13,7 +13,6 @@ import {
   arrowUndoOutline,
   schoolOutline,
   trashOutline,
-  gridOutline,
   shareOutline,
   locationOutline,
   warningOutline,
@@ -128,9 +127,6 @@ type Props = {
   deleteAllSamples: any;
   isLoggedIn: boolean;
   useTraining: boolean;
-  useGridRef: boolean;
-  useGridMap: boolean;
-  gridSquareUnit: string;
   geolocateSurveyEntries: boolean;
   onToggle: any;
   sendAnalytics?: boolean;
@@ -146,11 +142,8 @@ const MenuMain: FC<Props> = ({
   onToggle,
   useTraining,
   sendAnalytics,
-  useGridRef,
   useExperiments,
   geolocateSurveyEntries,
-  useGridMap,
-  gridSquareUnit,
   useSpeciesImageClassifier,
 }) => {
   const showUserDeleteDialog = useUserDeleteDialog(deleteUser);
@@ -160,8 +153,6 @@ const MenuMain: FC<Props> = ({
 
   const onSendAnalyticsToggle = (checked: boolean) =>
     onToggle('sendAnalytics', checked);
-  const onGridMapToggle = (checked: boolean) => onToggle('useGridMap', checked);
-  const onGridRefToggle = (checked: boolean) => onToggle('useGridRef', checked);
   const onTrainingModeToggle = (checked: boolean) =>
     onToggle('useTraining', checked);
   const onGeolocateSurveyEntriesToggle = (checked: boolean) =>
@@ -178,38 +169,6 @@ const MenuMain: FC<Props> = ({
           <T>Location</T>
         </IonItemDivider>
         <div className="rounded">
-          <MenuAttrToggle
-            icon={gridOutline}
-            label="Use Grid Ref"
-            value={useGridRef}
-            onChange={onGridRefToggle}
-          />
-
-          <InfoMessage color="dark">
-            Locations should be represented as UK Grid Reference instead of
-            Latitude and Longitude.
-          </InfoMessage>
-
-          <MenuAttrToggle
-            icon={gridOutline}
-            label="Show Map Grid"
-            value={useGridMap}
-            disabled={!useGridRef}
-            onChange={onGridMapToggle}
-          />
-
-          <InfoMessage color="dark">
-            Show UK Grid Reference over the map.
-          </InfoMessage>
-
-          <IonItem routerLink="/settings/survey" detail>
-            <IonIcon icon={gridOutline} size="small" slot="start" />
-            <IonLabel>
-              <T>Grid Square Unit</T>
-            </IonLabel>
-            <IonLabel slot="end">{gridSquareUnit}</IonLabel>
-          </IonItem>
-
           <IonItem routerLink="/settings/locations" detail>
             <IonIcon icon={locationOutline} size="small" slot="start" />
             <T>Manage Saved</T>

@@ -92,10 +92,7 @@ const Container = () => {
   const {
     sendAnalytics,
     useTraining,
-    useGridRef,
-    useGridMap,
     useExperiments,
-    gridSquareUnit,
     geolocateSurveyEntries,
     useSpeciesImageClassifier,
   } = appModel.attrs;
@@ -110,10 +107,7 @@ const Container = () => {
         deleteUser={deleteUser}
         sendAnalytics={sendAnalytics}
         useTraining={useTraining}
-        useGridRef={useGridRef}
-        useGridMap={useGridMap}
         useExperiments={useExperiments}
-        gridSquareUnit={gridSquareUnit}
         geolocateSurveyEntries={geolocateSurveyEntries}
         useSpeciesImageClassifier={useSpeciesImageClassifier}
         resetApp={() => resetApp(toast)}

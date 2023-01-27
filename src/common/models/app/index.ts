@@ -10,8 +10,6 @@ export type Attrs = ModelAttrs & {
   locations: any[];
   attrLocks: any;
   autosync: boolean;
-  useGridRef: boolean;
-  useGridMap: boolean;
   useTraining: boolean;
 
   useExperiments: boolean;
@@ -42,8 +40,6 @@ export const defaults: Attrs = {
   locations: [],
   attrLocks: { default: {}, complex: {} },
   autosync: true,
-  useGridRef: true,
-  useGridMap: true,
   useTraining: false,
 
   useExperiments: false,

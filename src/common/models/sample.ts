@@ -18,8 +18,6 @@ import defaultSurvey, {
   getTaxaGroupSurvey,
 } from 'Survey/Default/config';
 import listSurvey from 'Survey/List/config';
-import plantSurvey from 'Survey/Plant/config';
-import mothSurvey from 'Survey/Moth/config';
 import { IObservableArray } from 'mobx';
 import { coreAttributes, Survey } from 'Survey/common/config';
 import { useTranslation } from 'react-i18next';
@@ -42,8 +40,6 @@ const ATTRS_TO_LEAVE = [
 const surveyConfigs = {
   default: defaultSurvey,
   list: listSurvey,
-  plant: plantSurvey,
-  moth: mothSurvey,
 };
 
 type Location = {
@@ -72,7 +68,6 @@ type Metadata = SampleMetadata & {
    * @deprecated
    */
   complex_survey?: string;
-  gridSquareUnit?: 'monad' | 'tetrad';
   saved?: boolean;
 };
 
@@ -169,18 +164,8 @@ export default class Sample extends SampleOriginal<Attrs, Metadata> {
 
   getSurvey(): Survey {
     if (!this.survey) {
-      this._migrateLegacySurvey();
-      this._migrateTaxaGroups();
       this.surveyMigrated = true;
 
-      return this.getSurvey();
-    }
-
-    const existingV6Users =
-      parseInt(config?.version?.split('.')?.join(''), 10) < 604; // TODO: remove once the v6.0.4  is live
-    if (existingV6Users && !this.surveyMigrated) {
-      this._migrateTaxaGroups();
-      this.surveyMigrated = true;
       return this.getSurvey();
     }
 
@@ -238,71 +223,6 @@ export default class Sample extends SampleOriginal<Attrs, Metadata> {
     Object.keys(occ.attrs).forEach(removeOccNonCoreAttr);
   }
 
-  private _migrateTaxaGroups() {
-    if (this.metadata.survey !== 'default' && this.metadata.survey !== 'list')
-      return;
-
-    const migrateTaxaGroup = (smp: Sample) => {
-      if (!smp.metadata.taxa) {
-        const speciesSurvey = getTaxaGroupSurvey(
-          smp.occurrences[0]?.attrs.taxon?.group as number
-        );
-
-        if (
-          speciesSurvey?.taxa &&
-          !['moths', 'arthropods'].includes(speciesSurvey.taxa)
-        ) {
-          console.log(
-            `Found missing species group. Setting ${smp.cid} to ${speciesSurvey.taxa}.`
-          );
-          smp.metadata.taxa = speciesSurvey.taxa as any;
-        }
-      }
-    };
-
-    if (this.samples.length) {
-      this.samples.forEach(migrateTaxaGroup);
-    } else {
-      migrateTaxaGroup(this);
-    }
-  }
-
-  private _migrateLegacySurvey() {
-    if (
-      this.metadata.complex_survey === 'plant' ||
-      this.metadata.gridSquareUnit
-    ) {
-      console.log(`Found legacy survey. Setting ${this.cid} to plant.`);
-      this.metadata.survey = 'plant';
-      this.survey = plantSurvey;
-      this.save();
-      return;
-    }
-
-    if (this.metadata.complex_survey === 'moth') {
-      console.log(`Found legacy survey. Setting ${this.cid} to moth.`);
-      this.metadata.survey = 'moth';
-      this.survey = mothSurvey;
-      this.save();
-      return;
-    }
-
-    if (this.metadata.complex_survey === 'default') {
-      console.log(`Found legacy survey. Setting ${this.cid} to list.`);
-      this.metadata.survey = 'list';
-      this.survey = listSurvey;
-
-      this.save();
-      return;
-    }
-
-    console.log(`Found legacy survey. Setting ${this.cid} to default.`);
-    this.metadata.survey = 'default';
-    this.survey = defaultSurvey;
-
-    this.save();
-  }
-
   /**
    * Print pretty location.
    * @returns {string}
@@ -313,20 +233,16 @@ export default class Sample extends SampleOriginal<Attrs, Metadata> {
   }
 
   setGPSLocation = (location: Location) => {
-    const isNotPlantSurvey = this.metadata.survey !== 'plant';
     const isChild = this.parent;
-    if (isNotPlantSurvey || isChild) {
+    if (isChild) {
       this.attrs.location = location;
       return this.save();
     }
-
-    const { gridSquareUnit } = this.metadata;
 
     const gridCoords = locationToGrid(location);
     if (!gridCoords) return null;
 
     location.source = 'gridref'; // eslint-disable-line
-    location.accuracy = gridSquareUnit !== 'monad' ? 500 : 1000; // tetrad otherwise
 
     this.attrs.location = location;
     return this.save();

@@ -6,8 +6,6 @@ import CONFIG from 'common/config';
 import { Survey } from 'Survey/common/config';
 import defaultSurvey from 'Survey/Default/config';
 import listSurvey from 'Survey/List/config';
-import mothSurvey from 'Survey/Moth/config';
-import plantSurvey from 'Survey/Plant/config';
 import { Hit, Bucket, Record, Square } from './esResponse.d';
 
 const getSurveyQuery = ({ id }: Survey) => ({
@@ -24,9 +22,7 @@ const getRecordsQuery = (northWest: LatLng, southEast: LatLng) =>
         must: [
           {
             bool: {
-              should: [defaultSurvey, listSurvey, mothSurvey, plantSurvey].map(
-                getSurveyQuery
-              ),
+              should: [defaultSurvey, listSurvey].map(getSurveyQuery),
             },
           },
         ],
@@ -107,9 +103,7 @@ const getSquaresQuery = (
         must: [
           {
             bool: {
-              should: [defaultSurvey, listSurvey, mothSurvey, plantSurvey].map(
-                getSurveyQuery
-              ),
+              should: [defaultSurvey, listSurvey].map(getSurveyQuery),
             },
           },
         ],
