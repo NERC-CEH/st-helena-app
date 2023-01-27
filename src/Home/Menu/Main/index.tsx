@@ -25,7 +25,7 @@ import { Main, InfoMessage, UserFeedbackRequest } from '@flumens';
 import { Trans as T } from 'react-i18next';
 import config from 'common/config';
 import './styles.scss';
-import appLogo from './logo.svg';
+import appLogo from './logo.png';
 
 const shouldShowFeedback = (appModel: AppModel, isLoggedIn: boolean) => {
   if (appModel.attrs.feedbackGiven) {
