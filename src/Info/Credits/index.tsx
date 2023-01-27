@@ -1,6 +1,9 @@
 import { Page, Main, Header, Section } from '@flumens';
 import { Trans as T } from 'react-i18next';
-import sponsorsLogo from './sponsors.svg';
+import cehLogo from './images/cehLogo.png';
+import shriLogo from './images/shriLogo.png';
+import euLogo from './images/euLogo.jpg';
+import BESTLogo from './images/BESTLogo.png';
 import './styles.scss';
 
 const { P, H } = Section;
@@ -9,7 +12,24 @@ export default () => (
   <Page id="credits">
     <Header title="Credits" />
     <Main id="credits">
-      <img src={sponsorsLogo} alt="" />
+      <div className="sponsors">
+        <div className="row">
+          <div className="image-wrapper">
+            <img src={cehLogo} alt="UK Centre for Ecology & Hydrology" />
+          </div>
+          <div className="image-wrapper">
+            <img src={shriLogo} alt="St Helena Research Institute" />
+          </div>
+        </div>
+        <div className="row">
+          <div className="image-wrapper">
+            <img src={BESTLogo} alt="" />
+          </div>
+          <div className="image-wrapper">
+            <img src={euLogo} alt="" />
+          </div>
+        </div>
+      </div>
 
       <Section>
         <H>
@@ -24,69 +44,44 @@ export default () => (
             <b>Karolis Kazlauskis</b> (Flumens)
           </span>
           <span>
-            <b>John van Breda</b> (Biodiverse IT)
+            <b>Vilius Stankaitis</b> (Flumens)
           </span>
           <span>
-            <b>Tom Humphrey</b> (BSBI)
+            <b>Jim Bacon</b> (UKCEH)
           </span>
           <span>
-            <b>Martin Harvey</b> (UKCEH)
+            <b>Selene Gough</b> (SHRI)
           </span>
           <span>
-            <b>Sally Rankin</b>
-          </span>
-          <span>
-            <b>Colin Harrower</b> (UKCEH)
-          </span>
-          <span>
-            <b>Tom August</b> (UKCEH)
-          </span>
-          <span>
-            <b>Chris Raper</b> (NHM)
-          </span>
-          <span>
-            <b>Charles Roper</b> (FSC)
-          </span>
-          <span>
-            <b>Matt Smith</b>
-          </span>
-          <span>
-            <b>Alan Rowland</b>
-          </span>
-          <span>
-            <b>David Genney</b>
-          </span>
-          <span>
-            <b>Graham Checkley</b>
+            <b>Rebecca Cairns-Wicks</b> (SHRI)
           </span>
         </P>
       </Section>
-
       <Section>
         <P>
-          This app was part-funded by the{' '}
-          <a href="https://www.ceh.ac.uk/">UK Centre for Ecology & Hydrology</a>
-          /
-          <a href="http://jncc.defra.gov.uk/">
-            Joint Nature Conservation Committee
-          </a>{' '}
-          partnership supporting BRC.
+          App was funded by <a href="https://www.best2plus.org/">BEST 2.0+</a>.
+          The BEST 2.0+ project has received funding from the European Union.
+        </P>
+
+        <P>
+          This App was produced with the financial support of the European
+          Union. Its contents are the sole responsibility of and do not
+          necessarily reflect the views of the European Union
         </P>
       </Section>
-
       <Section>
         <H skipTranslation>
           <T>Welcome screen credits</T>:
         </H>
         <P skipTranslation className="credits">
-          <span>David Kitching</span>
-          <span>UK Ladybird Survey</span>
+          <span>Rebecca Cairns-Wicks</span>
         </P>
       </Section>
 
       <Section>
         <H>Icons were made by</H>
         <P skipTranslation className="credits">
+          Hanna Hickling (St Helena),{' '}
           <a
             href="https://www.flaticon.com/authors/nhor-phai"
             title="Nhor Phai"
