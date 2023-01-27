@@ -71,9 +71,9 @@ function useUserDeleteDialog(deleteUser: any) {
             icon={warningOutline}
             className="destructive-warning"
           >
-            This will remove your account on the iRecord website. You will lose
-            access to any records that you have previously submitted using the
-            app or website.
+            This will remove your account on the iRecord St Helena App website.
+            You will lose access to any records that you have previously
+            submitted using the app or website.
           </InfoMessage>
         </>
       ),

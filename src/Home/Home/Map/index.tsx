@@ -194,8 +194,8 @@ const Map: FC = () => {
           <div className="login-message">
             <T>
               You need to login to your{' '}
-              <Link to="/user/login">iRecord account</Link> to be able to view
-              the records.
+              <Link to="/user/login">iRecord St Helena App account</Link> to be
+              able to view the records.
             </T>
           </div>
         )}

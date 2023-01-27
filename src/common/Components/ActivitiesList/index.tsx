@@ -145,7 +145,7 @@ const Activities: FC<Props> = ({ sample, userModel, appModel, onSelect }) => {
           <p>
             <T>
               You can join in with more activities by visiting the{' '}
-              <a href={`${CONFIG.backend.url}/activities/list`}>
+              <a href={`${CONFIG.backend.iRecordUrl}/activities/list`}>
                 iRecord Activities
               </a>{' '}
               page.
@@ -158,7 +158,7 @@ const Activities: FC<Props> = ({ sample, userModel, appModel, onSelect }) => {
           <p>
             <T>
               For more about Activities see the{' '}
-              <a href={`${CONFIG.backend.url}/joining-activity`}>
+              <a href={`${CONFIG.backend.iRecordUrl}/joining-activity`}>
                 iRecord Help
               </a>{' '}
               page.

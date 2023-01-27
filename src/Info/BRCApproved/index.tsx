@@ -27,8 +27,9 @@ export default () => (
         <P skipTranslation>
           <T>
             Sent to the Biological Record Centre’s data warehouse linked to the
-            iRecord system where it accessible to you as the recorder, to an
-            expert community of verifiers and other users of iRecord
+            iRecord St Helena App system where it accessible to you as the
+            recorder, to an expert community of verifiers and other users of
+            iRecord
           </T>
           .
         </P>

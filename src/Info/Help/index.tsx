@@ -201,7 +201,7 @@ const Help: FC = () => (
               </p>
             </div>
           </Collapse>
-          <Collapse title="Sync. with iRecord">
+          <Collapse title="Sync. with iRecord St Helena App">
             <div>
               <p>
                 <T>
@@ -224,14 +224,16 @@ const Help: FC = () => (
                 <T>
                   Once it has successfully reached the database the record
                   becomes unavailable for new edits. To further edit it please
-                  use the <a href="http://irecord.org.uk">iRecord Website</a>.
+                  use the{' '}
+                  <a href={`${CONFIG.backend.url}`}>iRecord St Helena App</a>{' '}
+                  website .
                 </T>
               </p>
               <p>
                 <T>
-                  <b>Note:</b> you have to be signed in to your iRecord account
-                  and have a network connection, for the records to be
-                  automatically synchronised in the background.
+                  <b>Note:</b> you have to be signed in to your iRecord St
+                  Helena App account and have a network connection, for the
+                  records to be automatically synchronised in the background.
                 </T>
               </p>
             </div>
@@ -427,7 +429,7 @@ const Help: FC = () => (
             <div>
               <T>
                 For more help please visit the iRecord{' '}
-                <a href={`${CONFIG.backend.url}/forum/36`}>forum</a>.
+                <a href={`${CONFIG.backend.iRecordUrl}/forum/36`}>forum</a>.
               </T>
             </div>
           </IonItem>

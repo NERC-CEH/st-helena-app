@@ -63,8 +63,8 @@ const OnBoardingScreens: FC = ({ children }) => {
             <div className="message">
               <h2>Welcome</h2>
               <p>
-                <b>iRecord St Helena</b> is a platform for managing and sharing
-                all of your wildlife observations.
+                <b>iRecord St Helena App</b> is a platform for managing and
+                sharing all of your wildlife observations.
               </p>
             </div>
           </SwiperSlide>
@@ -87,7 +87,7 @@ const OnBoardingScreens: FC = ({ children }) => {
               <h2>Accuracy</h2>
               <p>
                 Locating wildlife is made easy by using your phone and the
-                iRecord maps.
+                iRecord St Helena App maps.
               </p>
             </div>
           </SwiperSlide>
