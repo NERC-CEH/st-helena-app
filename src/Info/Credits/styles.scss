@@ -27,5 +27,14 @@
         }
       }
     }
+
+    .logo {
+      img {
+        width: 50%;
+        max-width: 200px;
+        margin: 0 auto;
+        display: block;
+      }
+    }
   }
 }

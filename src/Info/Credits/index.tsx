@@ -4,6 +4,7 @@ import cehLogo from './images/cehLogo.png';
 import shriLogo from './images/shriLogo.png';
 import euLogo from './images/euLogo.jpg';
 import BESTLogo from './images/BESTLogo.png';
+import plantNetLogo from './images/PlantNetLogo.svg';
 import './styles.scss';
 
 const { P, H } = Section;
@@ -30,6 +31,17 @@ export default () => (
           </div>
         </div>
       </div>
+
+      <Section>
+        <p className="logo">
+          <img src={plantNetLogo} />
+        </p>
+        <P>
+          The image-based plant species identification service used, is based on
+          the Pl@ntNet recognition api, regularly updated and accessible through
+          the <a href="https://my.plantnet.org">Pl@ntNet website</a>.
+        </P>
+      </Section>
 
       <Section>
         <H>
@@ -66,7 +78,7 @@ export default () => (
         <P>
           This App was produced with the financial support of the European
           Union. Its contents are the sole responsibility of and do not
-          necessarily reflect the views of the European Union
+          necessarily reflect the views of the European Union.
         </P>
       </Section>
       <Section>
