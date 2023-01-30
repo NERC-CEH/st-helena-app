@@ -26,7 +26,6 @@ const config = {
 
   map: {
     mapboxApiKey: process.env.APP_MAPBOX_MAP_KEY as string,
-    osApiKey: process.env.APP_OS_MAP_KEY as string,
   },
 
   backend: {
