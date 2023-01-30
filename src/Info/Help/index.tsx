@@ -171,26 +171,26 @@ const Help: FC = () => (
               <p>
                 <T>
                   To find a species from its scientific name you can use
-                  shortcuts, e.g. to find <i>Bellis perrenis</i> (Daisy) you can
+                  shortcuts, e.g. to find <i>Succinea sanctaehelenae</i> you can
                   type:
                 </T>
               </p>
               <p>
                 <b>
-                  <i>bellis p</i>
+                  <i>succinea s</i>
                 </b>
                 <br />
                 <b>
-                  <i>bellis .ni</i>
+                  <i>succinea .ta</i>
                 </b>
                 <br />
                 <b>
-                  <i> beper </i>
+                  <i> susan </i>
                 </b>{' '}
                 <T>(2 letters of genus + 3 of species)</T>
                 <br />
                 <b>
-                  <i>perennis</i>
+                  <i>sanctaehelenae</i>
                 </b>
               </p>
               <p>
