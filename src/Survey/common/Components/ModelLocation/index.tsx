@@ -107,11 +107,6 @@ const ModelLocation: FC<Props> = ({ sample, subSample, ...otherProps }) => {
           suggestLocations: appModel.attrs.locations || [],
           placeholder: 'Site name eg nearby village',
           icon: locationNameIcon,
-          geocodingParams: {
-            access_token: config.map.mapboxApiKey,
-            types: 'locality,place,district,neighborhood,region,postcode',
-            country: 'GB',
-          },
         }}
         className="with-past-locations"
         {...otherProps}
