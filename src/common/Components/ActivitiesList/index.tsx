@@ -145,10 +145,10 @@ const Activities: FC<Props> = ({ sample, userModel, appModel, onSelect }) => {
           <p>
             <T>
               You can join in with more activities by visiting the{' '}
-              <a href={`${CONFIG.backend.iRecordUrl}/activities/list`}>
-                iRecord Activities
+              <a href={`${CONFIG.backend.url}/activities/list`}>
+                iRecord St Helena App
               </a>{' '}
-              page.
+              Activities page.
             </T>
           </p>
           <p>
