@@ -81,8 +81,8 @@ const numberOptions = [
 
 const survey: Survey = {
   name: 'default',
-  id: 374,
-  webForm: 'enter-app-record',
+  id: 716,
+  webForm: 'record/enter-casual',
 
   taxaGroups: [], // all // TODO: remove?
 
