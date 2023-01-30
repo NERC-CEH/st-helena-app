@@ -6,10 +6,8 @@ import { isPlatform } from '@ionic/react';
 
 const iRecordBackendUrl = 'https://irecord.org.uk';
 
-// TODO: REMOVE WHEN BACKEND IS SET-UP
-const backendUrl = process.env.APP_BACKEND_URL || 'https://irecord.org.uk';
-// const backendUrl =
-//   process.env.APP_BACKEND_URL || 'https://irecordsthelena.edu.sh/';
+const backendUrl =
+  process.env.APP_BACKEND_URL || 'https://irecordsthelena.edu.sh';
 
 const indiciaUrl =
   process.env.APP_BACKEND_INDICIA_URL || 'https://warehouse1.indicia.org.uk';
