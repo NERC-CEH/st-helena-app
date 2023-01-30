@@ -26,7 +26,7 @@ const DisabledRecordMessage: FC<Props> = ({ sample }) => {
         expand="block"
         href={
           occ?.id
-            ? `${config.backend.url}/record-details?occurrence_id=${occ.id}`
+            ? `${config.backend.url}/record/details?occurrence_id=${occ.id}`
             : config.backend.url
         }
       >
