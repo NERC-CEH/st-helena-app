@@ -1,9 +1,9 @@
 {
-  "name": "iRecord St Helena App",
+  "name": "irecord-st-helena-app",
   "id": "uk.ac.ceh.irecord.st.helena",
   "title": "iRecord St Helena App",
   "description": "iRecord mobile application.",
-  "version": "1.0.0",
+  "version": "6.0.3",
   "homepage": "https://irecordsthelena.edu.sh/",
   "scripts": {
     "start": "webpack serve --progress --port 8000",
