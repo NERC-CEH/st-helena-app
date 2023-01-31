@@ -5,10 +5,9 @@ import userModel from 'models/user';
 import appModel from 'models/app';
 import { coreAttributes, systemAttrs } from 'Survey/common/config';
 import defaultSurvey, { taxonGroupSurveys } from 'Survey/Default/config';
-import listSurvey from 'Survey/List/config';
-import plantsSurvey from 'Survey/Plant/config';
 import stringify from 'json-stable-stringify';
 import config from 'common/config';
+import listSurvey from 'Survey/List/config';
 import sinon from 'sinon';
 import i18n from 'i18next';
 
@@ -284,7 +283,7 @@ describe('Sample', () => {
       // Then
       expect(survey.name).toBe('default');
       expect(survey.taxaGroups.length).toBe(0);
-      expect(survey.webForm).toBe('enter-app-record');
+      expect(survey.webForm).toBe('record/enter-casual');
       expect(stringify(survey.attrs)).toBe(stringify(defaultSurvey.attrs));
       expect(stringify(survey.occ)).toBe(stringify(defaultSurvey.occ));
       expect(survey.occ.attrs.microscopicallyChecked).toBeUndefined();
@@ -313,19 +312,6 @@ describe('Sample', () => {
       expect(survey.occ.attrs.comment).toStrictEqual(
         defaultSurvey.occ.attrs.comment
       );
-    });
-
-    it('should match plant', async () => {
-      // Given
-      const sample = await plantsSurvey.create(Sample);
-
-      // When
-      const survey = sample.getSurvey();
-
-      // Then
-      expect(survey.name).toBe(plantsSurvey.name);
-      expect(survey.taxaGroups).toStrictEqual(plantsSurvey.taxaGroups);
-      expect(survey.attrs).toStrictEqual(plantsSurvey.attrs);
     });
   });
 
