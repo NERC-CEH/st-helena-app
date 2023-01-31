@@ -83,9 +83,9 @@
   --custom-color-lock: var(--ion-color-secondary);
   --custom-color-lock-tint: var(--ion-color-secondary-tint);
 
-  --verification-success: var(--ion-color-primary);
-  --verification-success-rgb: var(--ion-color-primary-rgb);
-  --verification-success-dark: var(--ion-color-primary-dark);
+  --verification-success: var(--ion-color-success);
+  --verification-success-rgb: var(--ion-color-success-rgb);
+  --verification-success-dark: var(--ion-color-success-dark);
   --verification-plausible: #fcb500;
   --verification-plausible-rgb: 252, 181, 0;
   --verification-plausible-dark: #3b2a00;
@@ -93,7 +93,7 @@
   --verification-rejected-rgb: var(--ion-color-danger-rgb);
   --verification-rejected-dark: var(--ion-color-danger-dark);
 
-  --classifier-success: var(--ion-color-primary-dark);
+  --classifier-success: var(--ion-color-sucess-dark);
   --classifier-success-background: #faffd6;
   --classifier-plausible: var(--ion-color-warning-dark);
   --classifier-plausible-background: #fff1be;
