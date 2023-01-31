@@ -59,6 +59,9 @@ export default () => (
             <b>Vilius Stankaitis</b> (Flumens)
           </span>
           <span>
+            <b>John van Breda</b> (Biodiverse IT)
+          </span>
+          <span>
             <b>Jim Bacon</b> (UKCEH)
           </span>
           <span>
@@ -67,6 +70,40 @@ export default () => (
           <span>
             <b>Rebecca Cairns-Wicks</b> (SHRI)
           </span>
+          <span>
+            <b>Roger Key</b>
+          </span>
+          <span>
+            <b>Alan Gray</b> (UKCEH)
+          </span>
+          <span>
+            <b>Timm Karisch</b> (Museum für Naturkunde und Vorgeschichte Dessau)
+          </span>
+          <span>
+            <b>Quentin Cronk</b> (UBC)
+          </span>
+          <span>
+            <b>Liza Fowler</b> (SHNT)
+          </span>
+          <span>
+            <b>Natasha Stevens</b> (SHNT)
+          </span>
+          <span>
+            <b>Vanessa Thomas-Williams</b> (ENRP)
+          </span>
+          <span>
+            <b>Rosalie Peters</b> (ENRP)
+          </span>
+          <span>
+            <b>Julie Balchin</b> (ENRP)
+          </span>
+          <span>
+            <b>Martina Leo</b> (ENRP)
+          </span>
+          <span>
+            <b>Devlin Yon</b> (SHG)
+          </span>
+          <span>Jodie Scipio Constantine</span> (SHG)
         </P>
       </Section>
       <Section>
