@@ -44,17 +44,14 @@
         line-height: 1.5em;
       }
     }
-
-    .first .message {
+    .first .message,
+    .second .message,
+    .fourth .message {
       top: 2%;
     }
 
-    .second .message {
-      bottom: 50%;
-    }
-    .third .message,
-    .fourth .message {
-      bottom: 15%;
+    .third .message {
+      bottom: 10%;
     }
 
     h2 {
