@@ -21,7 +21,11 @@ import { Haptics, ImpactStyle } from '@capacitor/haptics';
 import { starOutline } from 'ionicons/icons';
 import L from 'leaflet';
 import config from 'common/config';
-import { GPS_DISABLED_ERROR_MESSAGE } from 'helpers/GPS';
+import {
+  GPS_DISABLED_ERROR_MESSAGE,
+  DEFAULT_CENTER,
+  DEFAULT_ZOOM,
+} from 'helpers/GPS';
 import locationNameIcon from 'common/images/location-name.svg';
 import PastLocationsList from 'Components/PastLocationsList';
 import './styles.scss';
@@ -100,6 +104,8 @@ const ModelLocation: FC<Props> = ({ sample, subSample, ...otherProps }) => {
         model={model} // eslint-disable-line
         mapProviderOptions={config.map}
         onGPSClick={onGPSClick}
+        defaultCenter={DEFAULT_CENTER}
+        defaultZoom={DEFAULT_ZOOM}
         backButtonProps={{ text: 'Back' }}
         setLocation={setLocation}
         locationNameProps={{

@@ -1,8 +1,12 @@
 import { Geolocation, Position } from '@capacitor/geolocation';
+import { LatLngExpression } from 'leaflet';
 import { isPlatform } from '@ionic/core';
 import { HandledError } from '@flumens';
 
 export const GPS_DISABLED_ERROR_MESSAGE = 'Location services are not enabled';
+
+export const DEFAULT_CENTER: LatLngExpression = [-15.97981, -5.71014];
+export const DEFAULT_ZOOM = 13;
 
 type Options = {
   callback: any;
