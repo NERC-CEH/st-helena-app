@@ -9,12 +9,12 @@ const axios = require('axios');
 const makeCommonNameMap = require('./extractCommonNames');
 const optimise = require('./optimise');
 
-const UKSIListID = 15;
+const UKSIListID = 277;
 
 const FETCH_LIMIT = 50000;
 
 const warehouseURL = 'https://warehouse1.indicia.org.uk';
-const websiteURL = 'https://irecord.org.uk';
+const websiteURL = 'https://irecordsthelena.edu.sh';
 
 async function getToken() {
   const clientId = process.env.APP_BACKEND_CLIENT_ID;

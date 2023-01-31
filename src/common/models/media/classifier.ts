@@ -5,7 +5,7 @@ import speciesSearch from 'Survey/common/Components/TaxonSearch/utils';
 import config from 'common/config';
 import { Taxon } from 'models/occurrence';
 
-const UKSIListID = '15';
+const UKSIListID = '277';
 
 type AISuggestion = {
   probability: number;
