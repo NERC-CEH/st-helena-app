@@ -46,7 +46,7 @@ export default async function identify(url: string): Promise<Result> {
 
   const options: any = {
     method: 'post',
-    url: `${config.backend.url}/api-proxy/indicia?_api_proxy_uri=/`,
+    url: `${config.backend.url}/api-proxy/indicia?_api_proxy_uri=plantnet`,
     headers: {
       Authorization: `Bearer ${await userModel.getAccessToken()}`,
       'Content-Type': 'application/x-www-form-urlencoded',
