@@ -69,6 +69,8 @@ type Metadata = SampleMetadata & {
    */
   complex_survey?: string;
   saved?: boolean;
+
+  gridSquareUnit?: 'monad' | 'tetrad';
 };
 
 export default class Sample extends SampleOriginal<Attrs, Metadata> {
@@ -233,7 +235,7 @@ export default class Sample extends SampleOriginal<Attrs, Metadata> {
   }
 
   setGPSLocation = (location: Location) => {
-    const isPlantSurvey = this.metadata.survey === 'plant';
+    const isPlantSurvey = (this.metadata.survey as any) === 'plant';
     const isChild = this.parent;
 
     if (isPlantSurvey && !isChild) {
