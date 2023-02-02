@@ -233,16 +233,21 @@ export default class Sample extends SampleOriginal<Attrs, Metadata> {
   }
 
   setGPSLocation = (location: Location) => {
+    const isPlantSurvey = this.metadata.survey === 'plant';
     const isChild = this.parent;
-    if (isChild) {
+
+    if (isPlantSurvey && !isChild) {
+      const { gridSquareUnit } = this.metadata;
+
+      const gridCoords = locationToGrid(location);
+      if (!gridCoords) return null;
+
+      location.source = 'gridref'; // eslint-disable-line
+      location.accuracy = gridSquareUnit !== 'monad' ? 500 : 1000; // tetrad otherwise
+
       this.attrs.location = location;
       return this.save();
     }
-
-    const gridCoords = locationToGrid(location);
-    if (!gridCoords) return null;
-
-    location.source = 'gridref'; // eslint-disable-line
 
     this.attrs.location = location;
     return this.save();
