@@ -103,7 +103,9 @@ export default () => (
           <span>
             <b>Devlin Yon</b> (SHG)
           </span>
-          <span>Jodie Scipio Constantine</span> (SHG)
+          <span>
+            <b>Jodie Scipio Constantine</b> (SHG)
+          </span>
         </P>
       </Section>
       <Section>
