@@ -1,7 +1,6 @@
 {
 	"appId": "uk.ac.ceh.irecord.st.helena",
 	"appName": "iRecord St Helena App",
-	"bundledWebRuntime": false,
 	"webDir": "build",
 	"cordova": {}
 }

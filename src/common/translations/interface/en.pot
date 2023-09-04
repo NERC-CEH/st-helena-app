@@ -258,11 +258,8 @@ msgstr "Password"
 msgid "Email"
 msgstr "Email"
 
-
-
-
-msgid "No photo has been added.<br/>Press <3></3> to add."
-msgstr "No photo has been added.<br/>Press <3></3> to add."
+msgid "No photo has been added.<br/>Press <4><0></0></4> to add."
+msgstr "No photo has been added.<br/>Press <4><0></0></4> to add."
 
 msgid "acarine"
 msgstr "acarine"
@@ -2071,3 +2068,47 @@ msgstr "timeout"
 # Device GPS is disabled 
 msgid "Location services are not enabled"
 msgstr "Location services are not enabled"
+
+# Part of Camera 
+msgid "Get species suggestions"
+msgstr "Get species suggestions"
+
+# Part of Camera 
+msgid "Crop/Zoom"
+msgstr "Crop/Zoom"
+
+# Failed to indentify species message
+msgid "Sorry, we cwould not identify this species."
+msgstr "Sorry, we could not identify this species."
+
+# Failed to indentify species message
+msgid "Make sure that your species is in the centre of the image and is in focus."
+msgstr "Make sure that your species is in the centre of the image and is in focus."
+
+# Part of species identification message 
+msgid "Identifying..."
+msgstr "Identifying..."
+
+# Part of species identification message 
+msgid "Suggestions:"
+msgstr "Suggestions:"
+
+# Part of species identification message 
+msgid "Loading suggestions"
+msgstr "Loading suggestions"
+
+# Part of species identification message 
+msgid "Identifying..."
+msgstr "Identifying..."
+
+# Error message
+msgid "Not implemented on web."
+msgstr "Not implemented on web."
+
+# Tip message 
+msgid "Tap on the <1></1> button to capture a new record. <br/>"
+msgstr "Tap on the <1></1> button to capture a new record. <br/>"
+
+# Tip message 
+msgid "Long-press <1></1> button to see some more advanced options."
+msgstr "Long-press <1></1> button to see some more advanced options."
