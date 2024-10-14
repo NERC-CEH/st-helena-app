@@ -1,15 +1,5 @@
-import { FC } from 'react';
 import { observer } from 'mobx-react';
 import {
-  IonIcon,
-  IonList,
-  IonItemDivider,
-  IonItem,
-  IonLabel,
-} from '@ionic/react';
-import { Trans as T, useTranslation } from 'react-i18next';
-import {
-  flameOutline,
   arrowUndoOutline,
   schoolOutline,
   trashOutline,
@@ -19,7 +9,9 @@ import {
   personRemoveOutline,
   cameraOutline,
 } from 'ionicons/icons';
-import { Main, useAlert, InfoMessage, MenuAttrToggle } from '@flumens';
+import { Trans as T } from 'react-i18next';
+import { Main, useAlert, InfoMessage, Toggle } from '@flumens';
+import { IonIcon, IonList, IonItem, IonLabel } from '@ionic/react';
 import config from 'common/config';
 import './styles.scss';
 
@@ -34,13 +26,11 @@ function useResetDialog(resetApp: any) {
           <T>
             Are you sure you want to reset the application to its initial state?
           </T>
-          <InfoMessage
-            color="danger"
-            icon={warningOutline}
-            className="destructive-warning"
-          >
-            This will wipe all the locally stored app data!
-          </InfoMessage>
+          <p>
+            <b>
+              <T>This will wipe all the locally stored app data!</T>
+            </b>
+          </p>
         </>
       ),
       buttons: [
@@ -67,7 +57,7 @@ function useUserDeleteDialog(deleteUser: any) {
           <T>Are you sure you want to delete your account?</T>
           <InfoMessage
             color="danger"
-            icon={warningOutline}
+            prefix={<IonIcon src={warningOutline} className="size-5" />}
             className="destructive-warning"
           >
             This will remove your account on the iRecord St Helena App website.
@@ -94,17 +84,20 @@ function useUserDeleteDialog(deleteUser: any) {
 }
 
 function useDeleteAllSamplesDialog(deleteAllSamples: any) {
-  const { t } = useTranslation();
   const alert = useAlert();
 
   const showDeleteAllSamplesDialog = () =>
     alert({
       header: 'Remove All',
-      message: `${t(
-        'Are you sure you want to remove all successfully synchronised local records?'
-      )}<p><i><b>${t('Note')}:</b> ${t(
-        'records on the server will not be touched.'
-      )}</i></p>`,
+      message: (
+        <T>
+          Are you sure you want to remove all successfully synchronised local
+          records?
+          <p>
+            <b>Note:</b> records on the server will not be touched.
+          </p>
+        </T>
+      ),
       buttons: [
         {
           text: 'Cancel',
@@ -130,11 +123,10 @@ type Props = {
   geolocateSurveyEntries: boolean;
   onToggle: any;
   sendAnalytics?: boolean;
-  useExperiments?: boolean;
   useSpeciesImageClassifier: boolean;
 };
 
-const MenuMain: FC<Props> = ({
+const MenuMain = ({
   resetApp,
   isLoggedIn,
   deleteUser,
@@ -142,10 +134,9 @@ const MenuMain: FC<Props> = ({
   onToggle,
   useTraining,
   sendAnalytics,
-  useExperiments,
   geolocateSurveyEntries,
   useSpeciesImageClassifier,
-}) => {
+}: Props) => {
   const showUserDeleteDialog = useUserDeleteDialog(deleteUser);
   const showResetDialog = useResetDialog(resetApp);
   const showDeleteAllSamplesDialog =
@@ -157,42 +148,46 @@ const MenuMain: FC<Props> = ({
     onToggle('useTraining', checked);
   const onGeolocateSurveyEntriesToggle = (checked: boolean) =>
     onToggle('geolocateSurveyEntries', checked);
-  const onUseExperiments = (checked: boolean) =>
-    onToggle('useExperiments', checked);
+  // const onUseExperiments = (checked: boolean) =>
+  //   onToggle('useExperiments', checked);
   const onUseImageClassifier = (checked: boolean) =>
     onToggle('useSpeciesImageClassifier', checked);
 
   return (
     <Main>
       <IonList lines="full">
-        <IonItemDivider>
+        <h3 className="list-title">
           <T>Location</T>
-        </IonItemDivider>
-        <div className="rounded">
+        </h3>
+        <div className="rounded-list">
           <IonItem routerLink="/settings/locations" detail>
             <IonIcon icon={locationOutline} size="small" slot="start" />
             <T>Manage Saved</T>
           </IonItem>
 
-          <MenuAttrToggle
-            icon={locationOutline}
+          <Toggle
+            prefix={<IonIcon src={locationOutline} className="size-6" />}
             label="Geolocate Survey Entries"
-            value={geolocateSurveyEntries}
+            defaultSelected={geolocateSurveyEntries}
             onChange={onGeolocateSurveyEntriesToggle}
           />
+          <InfoMessage inline>
+            We will use GPS to obtain precise locations for species during
+            Species List surveys.
+          </InfoMessage>
         </div>
 
-        <IonItemDivider>
+        <h3 className="list-title">
           <T>Application</T>
-        </IonItemDivider>
-        <div className="rounded">
-          <MenuAttrToggle
-            icon={cameraOutline}
+        </h3>
+        <div className="rounded-list">
+          <Toggle
+            prefix={<IonIcon src={cameraOutline} className="size-6" />}
             label="Suggest species"
-            value={useSpeciesImageClassifier}
+            defaultSelected={useSpeciesImageClassifier}
             onChange={onUseImageClassifier}
           />
-          <InfoMessage color="dark">
+          <InfoMessage inline>
             Use image recognition to identify species from your photos.
           </InfoMessage>
           {/* <IonItem routerLink="/settings/language">
@@ -206,47 +201,47 @@ const MenuMain: FC<Props> = ({
             <IonLabel slot="end">{t(countries[country])}</IonLabel>
           </IonItem> */}
 
-          <MenuAttrToggle
-            icon={schoolOutline}
+          <Toggle
+            prefix={<IonIcon src={schoolOutline} className="size-6" />}
             label="Training Mode"
-            value={useTraining}
+            defaultSelected={useTraining}
             onChange={onTrainingModeToggle}
           />
-          <InfoMessage color="dark">
+          <InfoMessage inline>
             Mark any new records as 'training' and exclude from all reports.
           </InfoMessage>
 
-          <MenuAttrToggle
+          {/* <MenuAttrToggle
             icon={flameOutline}
             label="Experimental Features"
             value={useExperiments}
             onChange={onUseExperiments}
           />
 
-          <InfoMessage color="dark">
+          <InfoMessage inline>
             Some features are in a trial state and are subject to change in
             future releases.
-          </InfoMessage>
+          </InfoMessage> */}
 
-          <MenuAttrToggle
-            icon={shareOutline}
+          <Toggle
             label="Share App Analytics"
-            value={sendAnalytics}
+            prefix={<IonIcon src={shareOutline} className="size-5" />}
             onChange={onSendAnalyticsToggle}
+            defaultSelected={sendAnalytics}
           />
-          <InfoMessage color="dark">
+          <InfoMessage inline>
             Share app crash data so we can make the app more reliable.
           </InfoMessage>
         </div>
 
-        <div className="rounded destructive-item">
+        <div className="destructive-item rounded-list mt-6">
           <IonItem onClick={showDeleteAllSamplesDialog}>
             <IonIcon icon={trashOutline} size="small" slot="start" />
             <IonLabel>
               <T>Remove Uploaded Surveys</T>
             </IonLabel>
           </IonItem>
-          <InfoMessage color="dark">
+          <InfoMessage inline>
             You can remove uploaded surveys from this device.
           </InfoMessage>
 
@@ -256,7 +251,7 @@ const MenuMain: FC<Props> = ({
               <T>Reset app</T>
             </IonLabel>
           </IonItem>
-          <InfoMessage color="dark">
+          <InfoMessage inline>
             You can reset the app data to its default settings.
           </InfoMessage>
 
@@ -268,7 +263,7 @@ const MenuMain: FC<Props> = ({
                   <T>Delete account</T>
                 </IonLabel>
               </IonItem>
-              <InfoMessage color="dark">
+              <InfoMessage inline>
                 You can delete your user account from the system.
               </InfoMessage>
             </>
@@ -276,7 +271,7 @@ const MenuMain: FC<Props> = ({
         </div>
       </IonList>
 
-      <p className="app-version">{`v${config.version} (${config.build})`}</p>
+      <p className="float-right mx-2.5 my-3 opacity-70">{`v${config.version} (${config.build})`}</p>
     </Main>
   );
 };

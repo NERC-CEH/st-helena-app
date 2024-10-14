@@ -1,4 +1,4 @@
-import { Page, Main, Header, Section } from '@flumens';
+import { Header, Main, Page, Section } from 'common/flumens';
 import { Trans as T } from 'react-i18next';
 import cehLogo from './images/cehLogo.png';
 import shriLogo from './images/shriLogo.png';

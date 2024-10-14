@@ -21,8 +21,9 @@ export type Attrs = ModelAttrs & {
   showSurveysDeleteTip: boolean;
   shownLongPressTip: boolean;
   shownLockingSwipeTip: boolean;
+  showPastLocationsTip: boolean;
   feedbackGiven: boolean;
-  taxonGroupFilters: any[];
+  taxonGroupFilters: number[];
   searchNamesOnly: '' | 'scientific' | 'common';
   sendAnalytics: boolean;
   appSession: number;
@@ -51,6 +52,7 @@ export const defaults: Attrs = {
   showSurveysDeleteTip: true,
   shownLongPressTip: false,
   shownLockingSwipeTip: false,
+  showPastLocationsTip: true,
   feedbackGiven: false,
   taxonGroupFilters: [],
   searchNamesOnly: '',
@@ -64,6 +66,8 @@ export const defaults: Attrs = {
 };
 
 export class AppModel extends Model {
+  // eslint-disable-next-line
+  // @ts-ignore
   attrs: Attrs = Model.extendAttrs(this.attrs, defaults);
 
   isAttrLocked: any; // from extension
@@ -78,7 +82,7 @@ export class AppModel extends Model {
 
   getAllLocks: any; // from extension
 
-  setLocation: any; // from extension
+  setLocation!: (newLocation: any) => void; // from extension
 
   removeLocation: any; // from extension
 
@@ -89,18 +93,6 @@ export class AppModel extends Model {
 
     Object.assign(this, PastLocationsExtension);
     Object.assign(this, AttributeLockExtension);
-  }
-
-  toggleTaxonFilter(filter: any) {
-    const { taxonGroupFilters } = this.attrs;
-    const index = taxonGroupFilters.indexOf(filter);
-    if (index >= 0) {
-      taxonGroupFilters.splice(index, 1);
-    } else {
-      taxonGroupFilters.push(filter);
-    }
-
-    this.save();
   }
 
   resetDefaults() {

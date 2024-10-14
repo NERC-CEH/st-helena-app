@@ -1,7 +1,3 @@
-import { FC } from 'react';
-import CONFIG from 'common/config';
-import { Page, Collapse, Header, Main } from '@flumens';
-import { IonList, IonItemDivider, IonIcon, IonItem } from '@ionic/react';
 import {
   settingsOutline,
   arrowUndoOutline,
@@ -18,30 +14,33 @@ import {
   logOutOutline,
 } from 'ionicons/icons';
 import { Trans as T } from 'react-i18next';
-import './styles.scss';
-import deleteRecordImage from './swipe_record.png';
+import { Page, Collapse, Header, Main } from '@flumens';
+import { IonList, IonIcon, IonItem } from '@ionic/react';
+import CONFIG from 'common/config';
 import imageRecognitionAgreeImg from './image_recognition_agree.jpg';
 import imageRecognitionDisagreeImg from './image_recognition_disagree.jpg';
 import suggestionsImg from './image_recognition_suggestions.jpg';
+import './styles.scss';
+import deleteRecordImage from './swipe_record.png';
 
-const Help: FC = () => (
+const Help = () => (
   <Page id="help-page">
     <Header title="Help" />
     <Main id="faq">
-      <IonList lines="none">
-        <IonItemDivider>
+      <IonList lines="none" className="mb-3">
+        <h3 className="list-title">
           <T>Records</T>
-        </IonItemDivider>
-        <div className="rounded">
+        </h3>
+        <div className="rounded-list">
           <Collapse title="How to make a new record">
             <div>
               <p>
                 <T>There are two ways to start a record</T>.
               </p>
               <p>
-                <b>
+                <h4 className="my-2 font-bold">
                   <T>Taking a photo</T>
-                </b>
+                </h4>
               </p>
               <p>
                 <T>
@@ -53,20 +52,24 @@ const Help: FC = () => (
                 </T>
               </p>
               <p>
-                <b>
+                <h4 className="my-2 font-bold">
                   <T>Selecting species</T>
-                </b>
+                </h4>
               </p>
               <p>
                 <T>
                   Please press the plus{' '}
-                  <IonIcon icon={addOutline} size="small" /> button in the home
-                  page. This will bring you to the taxa search page. After
-                  selecting the species, open the record (either by opening it
-                  directly from the taxa search page using the edit button{' '}
-                  <span className="icon edit" /> beside the species name or
-                  through the home-list page) and fill in the details of the
-                  sighting, like location, date, number seen etc.
+                  <IonIcon
+                    icon={addOutline}
+                    className="rounded-full bg-primary-600 text-white"
+                    size="small"
+                  />{' '}
+                  button in the home page. This will bring you to the taxa
+                  search page. After selecting the species, open the record
+                  (either by opening it directly from the taxa search page using
+                  the edit button <span className="icon edit" /> beside the
+                  species name or through the home-list page) and fill in the
+                  details of the sighting, like location, date, number seen etc.
                 </T>
               </p>
               <p>
@@ -229,7 +232,7 @@ const Help: FC = () => (
                   website .
                 </T>
               </p>
-              <p>
+              <p className="mt-2">
                 <T>
                   <b>Note:</b> you have to be signed in to your iRecord St
                   Helena App account and have a network connection, for the
@@ -283,7 +286,7 @@ const Help: FC = () => (
                   button and next to the attribute.
                 </T>
               </p>
-              <p>
+              <p className="mt-2">
                 <T>
                   <b>Note:</b> For a GPS-sourced location, only the location
                   name can be locked, not the GPS value. As you move about, the
@@ -297,11 +300,11 @@ const Help: FC = () => (
           </Collapse>
         </div>
 
-        <IonItemDivider>
+        <h3 className="list-title">
           <T>User</T>
-        </IonItemDivider>
+        </h3>
 
-        <div className="rounded">
+        <div className="rounded-list">
           <Collapse title="Sign in/out or register">
             <div>
               <p>
@@ -320,7 +323,7 @@ const Help: FC = () => (
                   logout <IonIcon icon={logOutOutline} size="small" /> button
                 </T>
               </p>
-              <p>
+              <p className="mt-2">
                 <T>
                   <b>Note:</b> after registering a new account you must verify
                   your email address by clicking on a verification link sent to
@@ -377,7 +380,7 @@ const Help: FC = () => (
                   page.
                 </T>
               </p>
-              <p>
+              <p className="mt-2">
                 <T>
                   <b>Note:</b> only the activities that allow this mobile app
                   records and only the ones that you have joined on the iRecord
@@ -388,10 +391,10 @@ const Help: FC = () => (
           </Collapse>
         </div>
 
-        <IonItemDivider>
+        <h3 className="list-title">
           <T>Other</T>
-        </IonItemDivider>
-        <div className="rounded">
+        </h3>
+        <div className="rounded-list">
           <Collapse title="Manage saved locations">
             <div>
               <p>
@@ -400,7 +403,7 @@ const Help: FC = () => (
                   location page and from the settings{' '}
                   <IonIcon icon={settingsOutline} size="small" /> page
                 </T>
-                .
+                .{' '}
                 <T>
                   Swipe a location left and click edit{' '}
                   <IonIcon icon={createOutline} size="small" /> or delete
@@ -426,7 +429,7 @@ const Help: FC = () => (
             </div>
           </Collapse>
           <IonItem>
-            <div>
+            <div className="pt-3">
               <T>
                 For more help please visit the iRecord{' '}
                 <a href={`${CONFIG.backend.iRecordUrl}/forum/36`}>forum</a>.

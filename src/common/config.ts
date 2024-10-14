@@ -26,6 +26,7 @@ const config = {
 
   map: {
     mapboxApiKey: process.env.APP_MAPBOX_MAP_KEY as string,
+    defaultCenter: { latitude: -15.97981, longitude: -5.71014, zoom: 10.5 },
   },
 
   backend: {
@@ -35,7 +36,7 @@ const config = {
     clientId: process.env.APP_BACKEND_CLIENT_ID as string,
     clientPass: process.env.APP_BACKEND_CLIENT_PASS as string,
 
-    recordsServiceURL: `${indiciaUrl}/index.php/services/rest/es-occurrences/_search`,
+    occurrenceServiceURL: `${indiciaUrl}/index.php/services/rest/es-occurrences/_search`,
 
     mediaUrl: `${indiciaUrl}/upload/`,
 
