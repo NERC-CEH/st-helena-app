@@ -1,10 +1,10 @@
-import { Header, Main, Page, Section } from 'common/flumens';
 import { Trans as T } from 'react-i18next';
-import cehLogo from './images/cehLogo.png';
-import shriLogo from './images/shriLogo.png';
-import euLogo from './images/euLogo.jpg';
+import { Header, Main, Page, Section } from 'common/flumens';
 import BESTLogo from './images/BESTLogo.png';
 import plantNetLogo from './images/PlantNetLogo.svg';
+import cehLogo from './images/cehLogo.png';
+import euLogo from './images/euLogo.jpg';
+import shriLogo from './images/shriLogo.png';
 import './styles.scss';
 
 const { P, H } = Section;
