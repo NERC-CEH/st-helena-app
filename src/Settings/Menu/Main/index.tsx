@@ -8,12 +8,45 @@ import {
   warningOutline,
   personRemoveOutline,
   cameraOutline,
+  cloudDownloadOutline,
+  cloudUploadOutline,
 } from 'ionicons/icons';
 import { Trans as T } from 'react-i18next';
 import { Main, useAlert, InfoMessage, Toggle } from '@flumens';
-import { IonIcon, IonList, IonItem, IonLabel } from '@ionic/react';
+import { IonIcon, IonList, IonItem, IonLabel, isPlatform } from '@ionic/react';
 import config from 'common/config';
 import './styles.scss';
+
+function useDatabaseExportDialog(exportFn: any) {
+  const alert = useAlert();
+
+  const showDatabaseExportDialog = () => {
+    alert({
+      header: 'Export',
+      message: (
+        <>
+          Are you sure you want to export the data?
+          <p className="my-2 font-bold">
+            This feature is intended solely for technical support and is not a
+            supported method for exporting your data
+          </p>
+        </>
+      ),
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+        },
+        {
+          text: 'Export',
+          handler: exportFn,
+        },
+      ],
+    });
+  };
+
+  return showDatabaseExportDialog;
+}
 
 function useResetDialog(resetApp: any) {
   const alert = useAlert();
@@ -120,10 +153,11 @@ type Props = {
   deleteAllSamples: any;
   isLoggedIn: boolean;
   useTraining: boolean;
-  geolocateSurveyEntries: boolean;
   onToggle: any;
   sendAnalytics?: boolean;
   useSpeciesImageClassifier: boolean;
+  exportDatabase: any;
+  importDatabase: any;
 };
 
 const MenuMain = ({
@@ -134,9 +168,12 @@ const MenuMain = ({
   onToggle,
   useTraining,
   sendAnalytics,
-  geolocateSurveyEntries,
+  // useExperiments,
   useSpeciesImageClassifier,
+  exportDatabase,
+  importDatabase,
 }: Props) => {
+  const showDatabaseExportDialog = useDatabaseExportDialog(exportDatabase);
   const showUserDeleteDialog = useUserDeleteDialog(deleteUser);
   const showResetDialog = useResetDialog(resetApp);
   const showDeleteAllSamplesDialog =
@@ -146,8 +183,6 @@ const MenuMain = ({
     onToggle('sendAnalytics', checked);
   const onTrainingModeToggle = (checked: boolean) =>
     onToggle('useTraining', checked);
-  const onGeolocateSurveyEntriesToggle = (checked: boolean) =>
-    onToggle('geolocateSurveyEntries', checked);
   // const onUseExperiments = (checked: boolean) =>
   //   onToggle('useExperiments', checked);
   const onUseImageClassifier = (checked: boolean) =>
@@ -164,17 +199,6 @@ const MenuMain = ({
             <IonIcon icon={locationOutline} size="small" slot="start" />
             <T>Manage Saved</T>
           </IonItem>
-
-          <Toggle
-            prefix={<IonIcon src={locationOutline} className="size-6" />}
-            label="Geolocate Survey Entries"
-            defaultSelected={geolocateSurveyEntries}
-            onChange={onGeolocateSurveyEntriesToggle}
-          />
-          <InfoMessage inline>
-            We will use GPS to obtain precise locations for species during
-            Species List surveys.
-          </InfoMessage>
         </div>
 
         <h3 className="list-title">
@@ -232,6 +256,17 @@ const MenuMain = ({
           <InfoMessage inline>
             Share app crash data so we can make the app more reliable.
           </InfoMessage>
+          <IonItem onClick={showDatabaseExportDialog}>
+            <IonIcon icon={cloudDownloadOutline} size="small" slot="start" />
+            Export database
+          </IonItem>
+
+          {!isPlatform('hybrid') && (
+            <IonItem onClick={importDatabase}>
+              <IonIcon icon={cloudUploadOutline} size="small" slot="start" />
+              Import database
+            </IonItem>
+          )}
         </div>
 
         <div className="destructive-item rounded-list mt-6">

@@ -16,9 +16,11 @@ import {
   useToast,
   Location,
   RadioOption,
+  useSample,
 } from '@flumens';
 import { isPlatform } from '@ionic/core';
 import { useIonViewWillLeave } from '@ionic/react';
+import config from 'common/config';
 import locationNameIcon from 'common/images/location-name.svg';
 import appModel from 'models/app';
 import Sample, { getEmptyLocation } from 'models/sample';
@@ -40,8 +42,10 @@ export const setModelLocation = async (
     isFromMap &&
     Haptics.impact({ style: ImpactStyle.Light });
 
+  if (!model.data.location) Object.assign(model.data, { location: {} });
+
   Object.assign(
-    model.attrs.location, // carry over name, geocoded etc
+    model.data.location, // carry over name, geocoded etc
     getEmptyLocation(), // overwrite core location values
     newLocation
   );
@@ -49,7 +53,7 @@ export const setModelLocation = async (
   model.save();
 
   if (!isValidLocation(newLocation)) return;
-  appModel.setLocation(model.attrs.location);
+  appModel.setLocation(model.data.location);
 };
 
 type Styles = 'satellite' | 'street';
@@ -77,24 +81,29 @@ export const useMapStyles = (): [Styles, any, RadioOption[]] => {
 };
 
 type Props = {
-  subSample?: any;
   sample: any;
+  subSample?: any;
   setLocation?: any;
   skipLocationName?: boolean;
   skipPastLocations?: boolean;
 };
 
 const ModelLocationMap = ({
-  subSample,
-  sample,
+  sample: sampleProp,
+  subSample: subSampleProp,
   setLocation = setModelLocation,
   skipLocationName,
   skipPastLocations,
 }: Props) => {
-  const model = subSample || sample;
-  const isDisabled = model.isDisabled();
-  const location = model.attrs.location || {};
-  const parentLocation = model.parent?.attrs.location;
+  const { sample, subSample } = useSample<Sample>({
+    sample: sampleProp,
+    subSample: subSampleProp,
+  });
+
+  const model = subSample! || sample!;
+  const { isDisabled } = model;
+  const location = model.data.location || {};
+  const parentLocation = model.parent?.data.location;
 
   const onManuallyTypedLocationChange = (e: any) => {
     const value = e?.target?.value;
@@ -110,7 +119,7 @@ const ModelLocationMap = ({
   };
 
   const onLocationNameChange = ({ name, geocoded }: any) => {
-    model.attrs.location = { ...model.attrs.location, name, geocoded };
+    model.data.location = { ...model.data.location, name, geocoded };
   };
 
   const [showSettings, setShowSettings] = useState(false);
@@ -145,7 +154,7 @@ const ModelLocationMap = ({
   const fixOpenSettingsOnPageLeave = () => setShowSettings(false);
   useIonViewWillLeave(fixOpenSettingsOnPageLeave);
 
-  const getSampleLocation = (smp: Sample) => smp.attrs.location;
+  const getSampleLocation = (smp: Sample) => smp.data.location;
   const childLocations =
     model?.samples?.map(getSampleLocation).filter(isValidLocation) || [];
 
@@ -164,7 +173,12 @@ const ModelLocationMap = ({
             value={location.name}
             icon={locationNameIcon}
             placeholder="Site name eg nearby village"
-            suggestions={appModel.attrs.locations || []}
+            suggestions={appModel.data.locations || []}
+            geocodingParams={{
+              access_token: config.map.mapboxApiKey,
+              types: 'locality,place,district,neighborhood,region,postcode',
+              country: 'GB',
+            }}
           />
         )}
       </MapHeader>
@@ -180,7 +194,7 @@ const ModelLocationMap = ({
           currentStyle={currentStyle}
           onLayersClick={onLayersClick}
           onPastLocationsClick={!skipPastLocations && onPastLocationsClick}
-          isLocating={model.gps.locating}
+          isLocating={model.isGPSRunning()}
         />
 
         <MapSettingsPanel isOpen={showSettings} onClose={onCloseSettings}>

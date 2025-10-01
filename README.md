@@ -12,5 +12,5 @@ planning, research and education.
 
 ## Copyright and license
 
-Code copyright 2020 Centre for Ecology & Hydrology.
+Code copyright 2025 Centre for Ecology & Hydrology.
 Code released under the [GNU GPL v3 license](LICENSE).

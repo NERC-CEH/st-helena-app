@@ -85,15 +85,15 @@
   --verification-plausible: #fcb500;
   --verification-plausible-rgb: 252, 181, 0;
   --verification-plausible-dark: #3b2a00;
-  --verification-rejected: var(--ion-color-danger);
-  --verification-rejected-rgb: var(--ion-color-danger-rgb);
-  --verification-rejected-dark: var(--ion-color-danger-dark);
+  --verification-rejected: var(--color-danger);
+  --verification-rejected-rgb: var(--color-danger-rgb);
+  --verification-rejected-dark: var(--color-danger-900);
 
-  --classifier-success: var(--ion-color-sucess-dark);
+  --classifier-success: var(--color-success);
   --classifier-success-background: #faffd6;
-  --classifier-plausible: var(--ion-color-warning-dark);
+  --classifier-plausible: var(--color-warning);
   --classifier-plausible-background: #fff1be;
-  --classifier-unlikely: var(--ion-color-danger-dark);
+  --classifier-unlikely: var(--color-danger);
   --classifier-unlikely-background: #f3cfd8;
 
   --ion-page-background: #f0f3f0;
@@ -261,6 +261,9 @@ ion-item-divider {
 .date-input-attr ion-label[slot='end'] {
   color: var(--form-value-color);
   font-size: 1rem;
+  &.md {
+    font-size: 0.9rem;
+  }
 }
 
 // larger collapse headers
@@ -379,4 +382,11 @@ ion-accordion ion-icon[slot='start'].md {
 
 a.mapboxgl-ctrl-logo {
   background-image: url('./images/maptiler.svg');
+}
+
+// Fix menu item label sizes
+ion-item.in-list,
+ion-item[router-link] {
+  font-weight: 500;
+  font-size: 1rem;
 }
